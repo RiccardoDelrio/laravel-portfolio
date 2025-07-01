@@ -309,6 +309,155 @@ body {
     }
 }
 
+// Projects Section Styles
+.projects-header {
+    .display-4 {
+        color: var(--primary-color);
+    }
+
+    hr {
+        border-color: var(--primary-color);
+        opacity: 0.5;
+    }
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none !important;
+    border-radius: 16px;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .card-img-top {
+        height: 200px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        transition: all 0.3s ease;
+
+        .project-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            opacity: 0.75;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0.5rem;
+        }
+    }
+
+    &:hover .card-img-top {
+        transform: scale(1.02);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+
+        .card-title {
+            color: var(--text-dark);
+            font-weight: 600;
+
+            i {
+                color: var(--primary-color);
+            }
+        }
+
+        .tech-badges {
+            margin-bottom: 1rem;
+
+            .badge {
+                margin-right: 0.25rem;
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+                border-radius: 8px;
+            }
+        }
+
+        .action-buttons {
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+    }
+
+    .card-footer {
+        background: transparent !important;
+        border: none;
+        color: var(--text-light);
+        font-size: 0.875rem;
+        padding: 1rem 1.5rem;
+    }
+}
+
+.projects-empty-state {
+    padding: 5rem 0;
+    text-align: center;
+
+    .empty-icon {
+        font-size: 5rem;
+        color: var(--text-light);
+        opacity: 0.5;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        color: var(--text-light);
+        margin-bottom: 1rem;
+    }
+
+    p {
+        color: var(--text-light);
+        margin-bottom: 2rem;
+    }
+}
+
+// Project Modal Styles
+.modal {
+    .modal-header {
+        background: var(--primary-color);
+        color: white;
+        border-radius: 0;
+
+        .modal-title {
+            font-weight: 600;
+        }
+    }
+
+    .modal-body {
+        padding: 2rem;
+
+        h6 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 // Responsive Design
 @media (max-width: 768px) {
     .hero-buttons {

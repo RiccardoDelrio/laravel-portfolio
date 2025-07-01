@@ -10,12 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('url');
-            $table->timestamps(); // Aggiunge created_at e updated_at
+        Schema::table('projects', function (Blueprint $table) {
+            $table->json('tech')->nullable()->after('url');
         });
     }
 
@@ -24,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropColumn('tech');
+        });
     }
 };

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+<nav class="navbar navbar-expand-lg  navbar-custom">
     <div class="container">
         <a class="navbar-brand navbar-brand-custom" href="{{ url('/') }}">
             <span class="brand-primary">Riccardo</span><span class="brand-dark">Delrio</span>
@@ -20,7 +20,8 @@
                     <a class="nav-link" href="#about">Chi Sono</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projects">Progetti</a>
+                    <a class="nav-link {{ Request::is('projects*') ? 'active fw-semibold' : '' }}"
+                        href="{{ route('projects.index') }}">Progetti</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#skills">Competenze</a>
