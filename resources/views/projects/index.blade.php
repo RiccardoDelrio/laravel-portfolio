@@ -23,9 +23,12 @@
                                 <i class="fas fa-laptop-code"></i>
                             </div>
                             <!-- Project Badge -->
-                            <span class="badge bg-success project-badge">
-                                <i class="fas fa-check-circle me-1"></i>Completato
-                            </span>
+
+                            <button type="button" class="btn bg-danger project-badge" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Delete
+                            </button>
+
                         </div>
 
                         <div class="card-body d-flex flex-column">
@@ -52,9 +55,9 @@
                             <!-- Action Buttons -->
                             <div class="d-flex action-buttons mt-auto">
                                 @if($project->url)
-                                    <a href="{{ $project->url }}" target="_blank" class="btn btn-primary flex-fill">
+                                    <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary flex-fill">
                                         <i class="fas fa-external-link-alt me-1"></i>
-                                        Visualizza
+                                        Modifica Progetto
                                     </a>
                                 @endif
                                 <a href="{{ route("projects.show", $project->id) }}"
@@ -76,6 +79,29 @@
 
 
             @endforeach
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sei sicuro di voler eliminare il progetto?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    L'eliminazione di un progetto è un'azione irreversibile. Non sarà possibile recuperarlo dopo la
+                    cancellazione.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{{route('projects.destroy', $project)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Elimina" class="btn bg-danger project-badge">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
