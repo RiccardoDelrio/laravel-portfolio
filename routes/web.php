@@ -2,14 +2,18 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\ProjectController;
+use App\Models\Project;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-
+Route::get('/dashboard', function () {
+    return redirect()->route('admin.index');
+})->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,5 +27,8 @@ Route::middleware('auth')
         Route::get('/', [DashboardController::class, 'index'])
             ->name('index');
     });
+
+Route::resource('projects', ProjectController::class)
+    ->middleware('auth');
 
 require __DIR__ . '/auth.php';
