@@ -337,28 +337,17 @@ body {
         height: 200px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         position: relative;
-        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .project-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 3rem;
-            opacity: 0.75;
-        }
-
-        .project-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 0.5rem;
+            opacity: 0.8;
         }
     }
 
     &:hover .card-img-top {
-        transform: scale(1.02);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     }
 
     .card-body {
@@ -458,6 +447,49 @@ body {
     }
 }
 
+// Admin Panel Styles
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+// Card Hover Effects
+.card {
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+// Form Improvements
+.form-control:focus,
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+// Button Improvements
+.btn {
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
 // Responsive Design
 @media (max-width: 768px) {
     .hero-buttons {
@@ -485,5 +517,14 @@ body {
 
     .section-padding {
         padding: 60px 0;
+    }
+
+    .display-4 {
+        font-size: 2.5rem !important;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
     }
 }

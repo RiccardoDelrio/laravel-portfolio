@@ -19,7 +19,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Bootstrap & Custom CSS -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    
+    <!-- Page-specific CSS (solo se necessario per casi speciali) -->
+    @stack('styles')
 </head>
 
 <body>
@@ -32,6 +35,9 @@
 
         @include('partials.footer')
     </div>
+
+    <!-- Page-specific JavaScript -->
+    @stack('scripts')
 </body>
 
 </html>

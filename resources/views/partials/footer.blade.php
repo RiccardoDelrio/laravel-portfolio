@@ -117,22 +117,3 @@
         </div>
     </div>
 </footer>
-
-<style>
-    .social-links a {
-        transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-        color: #007bff !important;
-        transform: translateY(-2px);
-    }
-
-    footer .badge {
-        font-size: 0.75em;
-    }
-
-    footer a:hover {
-        color: #007bff !important;
-    }
-</style>

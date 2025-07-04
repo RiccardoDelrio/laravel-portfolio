@@ -9,8 +9,8 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect()->route('admin.index');
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return redirect()->route('admin.index');

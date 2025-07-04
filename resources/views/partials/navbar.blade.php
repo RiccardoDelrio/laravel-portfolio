@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg  navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
-        <a class="navbar-brand navbar-brand-custom" href="{{ url('/') }}">
-            <span class="brand-primary">Riccardo</span><span class="brand-dark">Delrio</span>
+        <a class="navbar-brand navbar-brand-custom" href="{{ route('admin.index') }}">
+            <span class="brand-primary">Admin</span><span class="brand-dark">Panel</span>
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -12,22 +12,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active fw-semibold' : '' }}" href="{{ url('/') }}">
-                        Home
+                    <a class="nav-link {{ Request::is('admin*') ? 'active fw-semibold' : '' }}"
+                        href="{{ route('admin.index') }}">
+                        Dashboard
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Chi Sono</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('projects*') ? 'active fw-semibold' : '' }}"
                         href="{{ route('projects.index') }}">Progetti</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#skills">Competenze</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contatti</a>
+                    <a class="nav-link {{ Request::is('categories*') ? 'active fw-semibold' : '' }}"
+                        href="{{ route('categories.index') }}">Categorie</a>
                 </li>
             </ul>
 

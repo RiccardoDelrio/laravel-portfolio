@@ -1,0 +1,107 @@
+/* Dashboard Admin Styles */
+.dashboard {
+    &-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    }
+
+    /* Statistics Cards */
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    &-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .display-4 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .opacity-75 {
+            opacity: 0.75;
+        }
+    }
+
+    /* Quick Actions */
+    .quick-actions-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .card-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 2px solid #dee2e6;
+            border-radius: 15px 15px 0 0;
+        }
+    }
+
+    .quick-action-btn {
+        padding: 1.5rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: 2px solid transparent;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--bs-primary);
+        }
+
+        .fs-4 {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        &-header h1 {
+            font-size: 2rem;
+        }
+        
+        &-card .display-4 {
+            font-size: 2.5rem;
+        }
+        
+        .quick-action-btn {
+            padding: 1rem;
+            text-align: center;
+
+            .text-start {
+                text-align: center !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+// Helper classes
+.gradient-primary {
+    background: var(--primary-gradient) !important;
+}
+
+.gradient-success {
+    background: var(--success-gradient) !important;
+}
+
+.shadow-custom {
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+.rounded-custom {
+    border-radius: var(--border-radius) !important;
+}
+
+.rounded-custom-sm {
+    border-radius: var(--border-radius-sm) !important;
+}
+
+.transition-custom {
+    transition: var(--transition);
+}
+
+// Text helpers
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Button helpers
+.btn-gradient {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    transition: var(--transition);
+
+    &:hover {
+        background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+}
