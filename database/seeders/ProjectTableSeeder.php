@@ -24,6 +24,7 @@ class ProjectTableSeeder extends Seeder
                 'name' => $faker->catchPhrase(),
                 'description' => $description,
                 'url' => $faker->url(),
+                'category_id' => $faker->numberBetween(1, 10),
             ]);
         }
     }
