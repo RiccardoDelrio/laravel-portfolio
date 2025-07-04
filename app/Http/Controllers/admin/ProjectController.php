@@ -36,7 +36,6 @@ class ProjectController extends Controller
         $newProject->name = $data['name'];
         $newProject->description = $data['description'];
         $newProject->url = $data['url'];
-        $newProject->tech = $data['tech'] ?? [];
         $newProject->save();
         return redirect()->route('projects.show', $newProject->id)
         ;
@@ -67,7 +66,6 @@ class ProjectController extends Controller
         $project->name = $data['name'];
         $project->description = $data['description'];
         $project->url = $data['url'];
-        $project->tech = $data['tech'] ?? [];
         $project->update();
         return redirect()->route('projects.show', $project->id);
     }

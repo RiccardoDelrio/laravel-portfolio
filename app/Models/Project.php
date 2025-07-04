@@ -6,14 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = [
-        'name',
-        'description',
-        'url',
-        'tech'
-    ];
-
-    protected $casts = [
-        'tech' => 'array'
-    ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

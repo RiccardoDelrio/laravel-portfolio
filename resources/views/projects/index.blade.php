@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container py-5">
+@section('content                            <!-- Project Description -->
+                            <p class="card-text text-muted flex-grow-1 mb-3">
+                                {{ Str::limit($project->description, 120, '...') }}
+                            </p>
+
+                            <!-- Action Buttons -->v class="container py-5">
         <!-- Header Section -->
         <div class="row mb-5">
             <div class="col-12 text-center projects-header">
@@ -12,6 +16,10 @@
                 <hr class="w-25 mx-auto">
             </div>
         </div>
+
+
+
+        <a class="btn btn-primary mb-4" href="{{ route('projects.create') }}"> + Progetto</a>
 
         <div class="row g-4">
             @foreach ($projects as $project)
@@ -25,8 +33,8 @@
                             <!-- Project Badge -->
 
                             <button type="button" class="btn bg-danger project-badge" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Delete
+                                data-bs-target="#deleteModal" data-project-id="{{ $project->id }}">
+                                Elimina
                             </button>
 
                         </div>
@@ -45,11 +53,7 @@
 
                             <!-- Project Tech Stack (if available) -->
                             <div class="tech-badges">
-                                @if($project->tech && is_array($project->tech))
-                                    @foreach($project->tech as $technology)
-                                        <span class="badge bg-primary me-1 mb-1">{{ $technology }}</span>
-                                    @endforeach
-                                @endif
+
                             </div>
 
                             <!-- Action Buttons -->
@@ -82,11 +86,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sei sicuro di voler eliminare il progetto?</h1>
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Sei sicuro di voler eliminare il progetto?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -94,14 +98,27 @@
                     cancellazione.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form action="{{route('projects.destroy', $project)}}" method="POST">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <form id="deleteForm" action="" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Elimina" class="btn bg-danger project-badge">
+                        <input type="submit" value="Elimina" class="btn btn-danger">
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteModal = document.getElementById('deleteModal');
+            const deleteForm = document.getElementById('deleteForm');
+
+            deleteModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const projectId = button.getAttribute('data-project-id');
+                deleteForm.action = `/projects/${projectId}`;
+            });
+        });
+    </script>
 @endsection

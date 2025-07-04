@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('description');
             $table->string('url');
             $table->timestamps(); // Aggiunge created_at e updated_at
+
         });
     }
 

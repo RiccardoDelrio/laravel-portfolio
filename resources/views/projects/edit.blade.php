@@ -22,12 +22,6 @@
                     value="{{ $project->url }}">
             </div>
 
-            <div class="mb-3">
-                <label for="tech" class="form-label">Tecnologie Utilizzate (separate da virgola)</label>
-                <input type="text" class="form-control" id="tech" name="tech" placeholder="Laravel, Vue.js, Bootstrap"
-                    value="{{ is_array($project->tech) ? implode(', ', $project->tech) : $project->tech }}">
-            </div>
-
             <button type="submit" class="btn btn-primary">Aggiorna Progetto</button>
         </div>
 

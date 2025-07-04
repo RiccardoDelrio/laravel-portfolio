@@ -18,11 +18,6 @@
                 <input type="url" class="form-control" id="url" name="url" placeholder="https://esempio.com" required>
             </div>
 
-            <div class="mb-3">
-                <label for="tech" class="form-label">Tecnologie Utilizzate (separate da virgola)</label>
-                <input type="text" class="form-control" id="tech" name="tech" placeholder="Laravel, Vue.js, Bootstrap">
-            </div>
-
             <button type="submit" class="btn btn-primary">Crea Progetto</button>
         </div>
 
