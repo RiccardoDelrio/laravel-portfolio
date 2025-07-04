@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
@@ -15,7 +16,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        return view('projects.index', compact('projects'));
+        return view('projects.index', compact('projects', ));
     }
 
     /**
@@ -23,7 +24,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $categories = Category::all();
+
+        return view('projects.create', compact('categories'));
     }
 
     /**
@@ -36,6 +39,7 @@ class ProjectController extends Controller
         $newProject->name = $data['name'];
         $newProject->description = $data['description'];
         $newProject->url = $data['url'];
+        $newProject->category_id = $data['category_id'];
         $newProject->save();
         return redirect()->route('projects.show', $newProject->id)
         ;
@@ -46,7 +50,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $categories = Category::all();
+        /*         dd($project->category);
+         */
+        return view('projects.show', compact('project', 'categories'));
     }
 
     /**
@@ -54,7 +61,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $categories = Category::all();
+
+        return view('projects.edit', compact('project', 'categories'));
     }
 
     /**
@@ -66,6 +75,7 @@ class ProjectController extends Controller
         $project->name = $data['name'];
         $project->description = $data['description'];
         $project->url = $data['url'];
+        $project->category_id = $data['category_id'];
         $project->update();
         return redirect()->route('projects.show', $project->id);
     }

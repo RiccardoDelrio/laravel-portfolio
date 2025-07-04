@@ -11,6 +11,9 @@
                 </h1>
                 <p class="lead text-muted">{{ $project->description }}</p>
                 <hr class="w-25 mx-auto">
+                <div>
+                    {{ $project->category ? $project->category->name : 'Nessuna categoria' }}
+                </div>
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\ProjectController;
@@ -29,6 +30,8 @@ Route::middleware('auth')
     });
 
 Route::resource('projects', ProjectController::class)
+    ->middleware('auth');
+Route::resource('categories', CategoryController::class)
     ->middleware('auth');
 
 require __DIR__ . '/auth.php';

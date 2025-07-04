@@ -18,7 +18,7 @@
                             problem solving che applico nello sviluppo software.
                         </p>
                         <div class="hero-buttons">
-                            <a href="#projects" class="btn-primary-custom">
+                            <a href={{ route('projects.index') }} class="btn-primary-custom">
                                 <i class="fas fa-folder-open me-2"></i>Vedi i Progetti
                             </a>
                             <a href="#contact" class="btn-outline-custom">
