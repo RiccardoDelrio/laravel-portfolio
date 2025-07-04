@@ -20,7 +20,7 @@
 
     <!-- Bootstrap & Custom CSS -->
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
-    
+
     <!-- Page-specific CSS (solo se necessario per casi speciali) -->
     @stack('styles')
 </head>
