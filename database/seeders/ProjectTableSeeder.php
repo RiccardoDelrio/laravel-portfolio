@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Project;
+use App\Models\Category;
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -20,12 +21,15 @@ class ProjectTableSeeder extends Seeder
                 'Include funzionalità avanzate e integrazione con servizi esterni per ottimizzare le performance e l\'esperienza utente. ' .
                 $faker->paragraph(2);
 
-            Project::create([
+            $project = Project::create([
                 'name' => $faker->catchPhrase(),
                 'description' => $description,
                 'url' => $faker->url(),
-                'category_id' => $faker->numberBetween(1, 10),
             ]);
+
+            // Associa da 1 a 3 categorie casuali a ogni progetto
+            $categories = Category::inRandomOrder()->take($faker->numberBetween(1, 3))->get();
+            $project->categories()->attach($categories);
         }
     }
 }

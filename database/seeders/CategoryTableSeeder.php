@@ -33,7 +33,6 @@ class CategoryTableSeeder extends Seeder
             $newCategory = new Category();
             $newCategory->name = $category;
             $newCategory->description = $faker->sentence(10);
-            $newCategory->project_id = $faker->randomFloat(0, 1, 10); // Associa a un progetto casuale
             $newCategory->save();
         }
 
