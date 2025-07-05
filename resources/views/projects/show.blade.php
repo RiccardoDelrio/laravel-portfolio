@@ -12,14 +12,17 @@
                 <div class="text-center mb-4">
                     <h1 class="display-4 fw-bold text-dark mb-3">
                         <i class="fas fa-project-diagram me-3 text-primary"></i>{{ $project->name }}
-                    </h1>
-                    @if($project->category)
+                    </h1> @foreach ($project->categories as $category)
                         <span class="badge bg-primary fs-6 mb-3">
-                            <i class="fas fa-tag me-2"></i>{{ $project->category->name }}
+                            <i class="fas fa-tag me-2"> </i>{{ $category->name }}
                         </span>
-                    @endif
+                    @endforeach
+
+
+
                     <p class="lead text-muted">{{ $project->description }}</p>
                 </div>
+
                 <div class="d-flex justify-content-center gap-3">
                     @if($project->url)
                         <a href="{{ $project->url }}" target="_blank" class="btn btn-primary btn-lg">

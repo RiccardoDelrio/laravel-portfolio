@@ -39,10 +39,14 @@ class ProjectController extends Controller
         $newProject->name = $data['name'];
         $newProject->description = $data['description'];
         $newProject->url = $data['url'];
-        $newProject->category_id = $data['category_id'];
         $newProject->save();
-        return redirect()->route('projects.show', $newProject->id)
-        ;
+
+        // Attach categories to the project
+        if (isset($data['category_ids'])) {
+            $newProject->categories()->attach($data['category_ids']);
+        }
+
+        return redirect()->route('projects.show', $newProject->id);
     }
 
     /**
@@ -51,8 +55,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $categories = Category::all();
-        /*         dd($project->category);
-         */
+
         return view('projects.show', compact('project', 'categories'));
     }
 
@@ -75,8 +78,13 @@ class ProjectController extends Controller
         $project->name = $data['name'];
         $project->description = $data['description'];
         $project->url = $data['url'];
-        $project->category_id = $data['category_id'];
         $project->update();
+
+        // Sync categories (this will remove old associations and add new ones)
+        if (isset($data['category_ids'])) {
+            $project->categories()->sync($data['category_ids']);
+        }
+
         return redirect()->route('projects.show', $project->id);
     }
 
