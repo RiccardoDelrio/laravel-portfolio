@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
-class CategoryTableSeeders extends Seeder
+class CategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
