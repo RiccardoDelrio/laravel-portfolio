@@ -22,11 +22,11 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
         $categories = Category::all();
 
-        return view('projects.create', compact('categories'));
+        return view('projects.create', compact('categories', 'project'));
     }
 
     /**
@@ -42,8 +42,8 @@ class ProjectController extends Controller
         $newProject->save();
 
         // Attach categories to the project
-        if (isset($data['category_ids'])) {
-            $newProject->categories()->attach($data['category_ids']);
+        if (isset($data['categories'])) {
+            $newProject->categories()->attach($data['categories']);
         }
 
         return redirect()->route('projects.show', $newProject->id);
@@ -81,8 +81,8 @@ class ProjectController extends Controller
         $project->update();
 
         // Sync categories (this will remove old associations and add new ones)
-        if (isset($data['category_ids'])) {
-            $project->categories()->sync($data['category_ids']);
+        if (isset($data['categories'])) {
+            $project->categories()->sync($data['categories']);
         }
 
         return redirect()->route('projects.show', $project->id);

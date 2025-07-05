@@ -70,7 +70,11 @@
                                     <i class="fas fa-tag me-2 text-primary"></i>Categoria
                                 </h6>
                                 <p class="text-muted mb-4">
-                                    {{ $project->category ? $project->category->name : 'Nessuna categoria assegnata' }}
+                                    @foreach ($project->categories as $category)
+                                        <span class=" fs-6 mb-3">
+                                            {{  $category->name }}
+                                        </span>
+                                    @endforeach
                                 </p>
 
                                 <h6 class="fw-bold mb-3">

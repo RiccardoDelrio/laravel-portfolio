@@ -30,53 +30,39 @@
                     <div class="card-body p-4">
                         <form action="{{ route('projects.store') }}" method="POST">
                             @csrf
-                            
+
                             <div class="mb-4">
                                 <label for="name" class="form-label fw-semibold">
                                     <i class="fas fa-project-diagram me-2 text-primary"></i>Nome del Progetto
                                 </label>
-                                <input type="text" 
-                                       class="form-control form-control-lg @error('name') is-invalid @enderror" 
-                                       id="name" 
-                                       name="name" 
-                                       value="{{ old('name') }}"
-                                       placeholder="Inserisci il nome del progetto..."
-                                       required>
-                                @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <input type="text" class="form-control form-control-lg " id="name" name="name" value=""
+                                    placeholder="Inserisci il nome del progetto..." required>
+
+
                             </div>
 
                             <div class="mb-4">
                                 <label for="category_id" class="form-label fw-semibold">
                                     <i class="fas fa-tag me-2 text-primary"></i>Categoria del Progetto
                                 </label>
-                                <select class="form-select form-select-lg @error('category_id') is-invalid @enderror" 
-                                        id="category_id" 
-                                        name="category_id">
-                                    <option value="">Seleziona una categoria (opzionale)</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" 
-                                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                @foreach ($categories as $category)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category-{{ $category->id }}"
+                                            name="categories[]" />
+                                        <label class="form-check-label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                    </div>
+                                @endforeach
+                         
                             </div>
 
                             <div class="mb-4">
                                 <label for="description" class="form-label fw-semibold">
                                     <i class="fas fa-align-left me-2 text-primary"></i>Descrizione del Progetto
                                 </label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" 
-                                          id="description" 
-                                          name="description" 
-                                          rows="5"
-                                          placeholder="Descrivi il tuo progetto, le tecnologie utilizzate, gli obiettivi..."
-                                          required>{{ old('description') }}</textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" id="description"
+                                    name="description" rows="5"
+                                    placeholder="Descrivi il tuo progetto, le tecnologie utilizzate, gli obiettivi..."
+                                    required>{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -86,13 +72,8 @@
                                 <label for="url" class="form-label fw-semibold">
                                     <i class="fas fa-link me-2 text-primary"></i>URL del Progetto
                                 </label>
-                                <input type="url" 
-                                       class="form-control form-control-lg @error('url') is-invalid @enderror" 
-                                       id="url" 
-                                       name="url" 
-                                       value="{{ old('url') }}"
-                                       placeholder="https://esempio.com"
-                                       required>
+                                <input type="url" class="form-control form-control-lg @error('url') is-invalid @enderror"
+                                    id="url" name="url" value="{{ old('url') }}" placeholder="https://esempio.com" required>
                                 @error('url')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

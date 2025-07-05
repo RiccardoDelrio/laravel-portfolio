@@ -48,24 +48,19 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-4">
+                                <div class="mb-4">
                                 <label for="category_id" class="form-label fw-semibold">
                                     <i class="fas fa-tag me-2 text-primary"></i>Categoria del Progetto
                                 </label>
-                                <select class="form-select form-select-lg @error('category_id') is-invalid @enderror" 
-                                        id="category_id" 
-                                        name="category_id">
-                                    <option value="">Seleziona una categoria (opzionale)</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" 
-                                                {{ (old('category_id') ?? $project->category_id) == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                @foreach ($categories as $category)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category-{{ $category->id }}"
+                                            name="categories[]" 
+                                            @if($project->categories->contains($category->id)) checked @endif />
+                                        <label class="form-check-label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                    </div>
+                                @endforeach
+                         
                             </div>
 
                             <div class="mb-4">
